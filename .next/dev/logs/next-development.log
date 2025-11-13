@@ -1,10 +1,4 @@
-[00:00:00.940] Server  LOG      ✓ Ready in 670ms
-[00:00:03.987] Server  LOG      ○ Compiling / ...
-[00:00:06.124] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:06.199] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:06.248] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:06.843] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:21.112] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:21.781] Browser ERROR   Failed to join room: {"error":"Room is full"}
-[00:00:21.781] Browser ERROR   Failed to join room: Room is full
-[00:01:27.492] Server  LOG      ✓ Compiled in 50ms
+[00:00:00.955] Server  LOG      ✓ Ready in 664ms
+[00:00:04.562] Server  LOG      ○ Compiling /online/[roomId] ...
+[00:00:09.437] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:51.220] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold

@@ -88,11 +88,19 @@ export default function OnlineGamePage() {
       // Join or create room
       const joinResult = await realtime.joinRoom();
       if (!joinResult.success) {
-        console.error("Failed to join room:", joinResult.error);
+        const errorMsg = joinResult.error || "Unknown error";
+        console.error("Failed to join room:", errorMsg);
         setConnectionStatus("error");
+        
         // Show error message to user
-        if (joinResult.error?.includes("not configured")) {
+        if (errorMsg.includes("not configured")) {
           alert("Supabase is not configured. Please check your .env.local file and restart the dev server.");
+        } else if (errorMsg.includes("duplicate key") || errorMsg.includes("already exists")) {
+          // Room already exists - try to reconnect by fetching the room state
+          console.log("Room already exists, attempting to reconnect...");
+          await realtime.connect(); // This will fetch the existing room state
+        } else {
+          console.error("Join room error:", errorMsg);
         }
         return;
       }

@@ -71,7 +71,16 @@ export async function POST(
     }
 
     if (existingRoom) {
-      // Room exists - try to join
+      // Room exists - check if player is already in the room
+      const isPlayerX = existingRoom.player_x_id === playerId;
+      const isPlayerO = existingRoom.player_o_id === playerId;
+      
+      if (isPlayerX || isPlayerO) {
+        // Player is already in the room, just return it
+        return NextResponse.json(existingRoom);
+      }
+
+      // Room exists but player is not in it - try to join
       if (action === "join") {
         if (existingRoom.player_x_id && existingRoom.player_o_id) {
           return NextResponse.json(
@@ -84,24 +93,38 @@ export async function POST(
         const updates: Partial<typeof existingRoom> = {};
         if (!existingRoom.player_x_id) {
           updates.player_x_id = playerId;
-          updates.status = "playing";
+          if (!existingRoom.player_o_id) {
+            updates.status = "waiting"; // Still waiting for second player
+          } else {
+            updates.status = "playing"; // Both players now
+          }
         } else if (!existingRoom.player_o_id) {
           updates.player_o_id = playerId;
+          updates.status = "playing"; // Both players now
         }
 
-        const { data: updatedRoom, error } = await supabase
-          .from("rooms")
-          .update(updates)
-          .eq("id", roomId)
-          .select()
-          .single();
+        // Only update if there are changes
+        if (Object.keys(updates).length > 0) {
+          const { data: updatedRoom, error: updateError } = await supabase
+            .from("rooms")
+            .update(updates)
+            .eq("id", roomId)
+            .select()
+            .single();
 
-        if (error) throw error;
-        return NextResponse.json(updatedRoom);
+          if (updateError) {
+            console.error("Error updating room:", updateError);
+            return NextResponse.json(
+              { error: `Failed to join room: ${updateError.message || "Database error"}` },
+              { status: 500 }
+            );
+          }
+          return NextResponse.json(updatedRoom);
+        }
       }
       return NextResponse.json(existingRoom);
     } else {
-      // Create new room
+      // Room doesn't exist - create new room
       const initialBoard = createEmptyBoard();
       const { data: newRoom, error: insertError } = await supabase
         .from("rooms")
@@ -118,6 +141,25 @@ export async function POST(
         .single();
 
       if (insertError) {
+        // If it's a duplicate key error, the room was created between our check and insert
+        // Try to fetch it again
+        if (insertError.code === "23505" || insertError.message?.includes("duplicate key")) {
+          const { data: room, error: retryError } = await supabase
+            .from("rooms")
+            .select("*")
+            .eq("id", roomId)
+            .single();
+          
+          if (!retryError && room) {
+            // Check if player is in this room
+            if (room.player_x_id === playerId || room.player_o_id === playerId) {
+              return NextResponse.json(room);
+            }
+            // Room exists but player not in it - try to join
+            return NextResponse.json(room);
+          }
+        }
+        
         console.error("Error creating room:", insertError);
         return NextResponse.json(
           { error: `Failed to create room: ${insertError.message || "Database error"}` },
