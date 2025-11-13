@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { RotateCcw, Users, Cpu } from "lucide-react";
+import { RotateCcw, Users, Cpu, Globe } from "lucide-react";
+import { useRouter } from "next/navigation";
 import type { Difficulty } from "../lib/game";
 
 interface ControlsProps {
@@ -12,6 +13,7 @@ interface ControlsProps {
   gameMode: "1P" | "2P";
   difficulty: Difficulty;
   disabled?: boolean;
+  showOnlineButton?: boolean;
 }
 
 export function Controls({
@@ -21,8 +23,16 @@ export function Controls({
   gameMode,
   difficulty,
   disabled = false,
+  showOnlineButton = true,
 }: ControlsProps) {
+  const router = useRouter();
   const difficulties: Difficulty[] = ["easy", "medium", "hard"];
+
+  const handlePlayOnline = () => {
+    // Generate a unique room ID
+    const roomId = crypto.randomUUID();
+    router.push(`/online/${roomId}`);
+  };
 
   return (
     <motion.div
@@ -41,6 +51,19 @@ export function Controls({
         <RotateCcw className="mr-2 h-4 w-4" aria-hidden="true" />
         New Game
       </Button>
+
+      {showOnlineButton && (
+        <Button
+          onClick={handlePlayOnline}
+          variant="default"
+          size="lg"
+          className="min-w-[140px] bg-primary"
+          aria-label="Play online with another player"
+        >
+          <Globe className="mr-2 h-4 w-4" aria-hidden="true" />
+          Play Online
+        </Button>
+      )}
 
       <Button
         onClick={onModeToggle}

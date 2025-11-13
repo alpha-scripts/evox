@@ -1,0 +1,3 @@
+module.exports=[64433,a=>{a.v({className:"inter_5972bc34-module__OU16Qa__className"})},65796,a=>{"use strict";var b=a.i(85986),c=a.i(64433);let d={className:c.default.className,style:{fontFamily:"'Inter', 'Inter Fallback'",fontStyle:"normal"}};function e({children:a}){return(0,b.jsx)("html",{lang:"en",suppressHydrationWarning:!0,children:(0,b.jsx)("body",{className:d.className,suppressHydrationWarning:!0,children:a})})}null!=c.default.variable&&(d.variable=c.default.variable),a.s(["default",()=>e,"metadata",0,{title:"Tic Tac Toe",description:"A modern, responsive Tic Tac Toe web app"}],65796)}];
+
+//# sourceMappingURL=%5Broot-of-the-server%5D__92426bc8._.js.map

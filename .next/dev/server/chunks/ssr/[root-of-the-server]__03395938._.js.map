@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 14, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/David/Tictactoe/app/page.tsx"],"sourcesContent":["export default function Home() {\r\n  return (\r\n    <main className=\"flex min-h-screen flex-col items-center justify-center p-24\">\r\n      <div className=\"z-10 max-w-5xl w-full items-center justify-between font-mono text-sm\">\r\n        <h1 className=\"text-4xl font-bold text-center mb-8\">\r\n          Tic Tac Toe\r\n        </h1>\r\n        <p className=\"text-center text-muted-foreground\">\r\n          Game coming soon...\r\n        </p>\r\n      </div>\r\n    </main>\r\n  );\r\n}\r\n\r\n"],"names":[],"mappings":";;;;;;AAAe,SAAS;IACtB,qBACE,2PAAC;QAAK,WAAU;kBACd,cAAA,2PAAC;YAAI,WAAU;;8BACb,2PAAC;oBAAG,WAAU;8BAAsC;;;;;;8BAGpD,2PAAC;oBAAE,WAAU;8BAAoC;;;;;;;;;;;;;;;;;AAMzD","debugId":null}}]
+}
