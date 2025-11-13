@@ -86,19 +86,35 @@ export class RealtimeGame {
   }
 
   private async fetchRoomState(): Promise<void> {
-    const { data: room, error } = await supabase
-      .from("rooms")
-      .select("*")
-      .eq("id", this.roomId)
-      .single();
+    try {
+      const { data: room, error } = await supabase
+        .from("rooms")
+        .select("*")
+        .eq("id", this.roomId)
+        .single();
 
-    if (error) {
-      console.error("Error fetching room state:", error);
-      return;
-    }
+      if (error) {
+        // Room not found is expected for new rooms - it will be created via joinRoom
+        if (error.code === "PGRST116") {
+          console.log("Room not found yet, will be created on join");
+          return;
+        }
+        
+        // Log detailed error information
+        console.error("Error fetching room state:", {
+          code: error.code,
+          message: error.message,
+          details: error.details,
+          hint: error.hint,
+        });
+        return;
+      }
 
-    if (room) {
-      this.handleRoomUpdate(room);
+      if (room) {
+        this.handleRoomUpdate(room);
+      }
+    } catch (err) {
+      console.error("Unexpected error in fetchRoomState:", err);
     }
   }
 
@@ -239,6 +255,19 @@ export class RealtimeGame {
 
   async joinRoom(): Promise<{ success: boolean; playerRole?: "X" | "O"; error?: string }> {
     try {
+      // Check if Supabase is configured
+      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+      const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+      
+      if (!supabaseUrl || !supabaseKey || 
+          supabaseUrl.includes("placeholder") || 
+          supabaseKey.includes("placeholder")) {
+        return { 
+          success: false, 
+          error: "Supabase is not configured. Please set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY in .env.local" 
+        };
+      }
+
       const response = await fetch(`/api/room/${this.roomId}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -249,8 +278,28 @@ export class RealtimeGame {
       });
 
       if (!response.ok) {
-        const error = await response.json();
-        return { success: false, error: error.error || "Failed to join room" };
+        let errorMessage = "Failed to join room";
+        try {
+          const errorText = await response.text();
+          if (errorText) {
+            try {
+              const errorJson = JSON.parse(errorText);
+              errorMessage = errorJson.error || errorMessage;
+            } catch {
+              errorMessage = errorText || errorMessage;
+            }
+          }
+        } catch (e) {
+          console.error("Error parsing error response:", e);
+        }
+        
+        console.error("Failed to join room:", {
+          status: response.status,
+          statusText: response.statusText,
+          message: errorMessage,
+        });
+        
+        return { success: false, error: errorMessage };
       }
 
       const room: Room = await response.json();
@@ -261,10 +310,13 @@ export class RealtimeGame {
         this.playerRole = "O";
       }
 
-      return { success: true, playerRole: this.playerRole };
+      return { success: true, playerRole: this.playerRole || undefined };
     } catch (error) {
       console.error("Error joining room:", error);
-      return { success: false, error: "Failed to join room" };
+      return { 
+        success: false, 
+        error: error instanceof Error ? error.message : "Failed to join room" 
+      };
     }
   }
 

@@ -87,6 +87,16 @@ export default function OnlineGamePage() {
 
       // Join or create room
       const joinResult = await realtime.joinRoom();
+      if (!joinResult.success) {
+        console.error("Failed to join room:", joinResult.error);
+        setConnectionStatus("error");
+        // Show error message to user
+        if (joinResult.error?.includes("not configured")) {
+          alert("Supabase is not configured. Please check your .env.local file and restart the dev server.");
+        }
+        return;
+      }
+      
       if (joinResult.success && joinResult.playerRole) {
         setPlayerRole(joinResult.playerRole);
         setIsMyTurn(joinResult.playerRole === "X");

@@ -55,11 +55,20 @@ export async function POST(
     }
 
     // Check if room exists
-    const { data: existingRoom } = await supabase
+    const { data: existingRoom, error: fetchError } = await supabase
       .from("rooms")
       .select("*")
       .eq("id", roomId)
       .single();
+
+    // If error is "not found", that's okay - we'll create the room
+    if (fetchError && fetchError.code !== "PGRST116") {
+      console.error("Error checking for existing room:", fetchError);
+      return NextResponse.json(
+        { error: `Database error: ${fetchError.message || "Failed to check room"}` },
+        { status: 500 }
+      );
+    }
 
     if (existingRoom) {
       // Room exists - try to join
@@ -94,7 +103,7 @@ export async function POST(
     } else {
       // Create new room
       const initialBoard = createEmptyBoard();
-      const { data: newRoom, error } = await supabase
+      const { data: newRoom, error: insertError } = await supabase
         .from("rooms")
         .insert({
           id: roomId,
@@ -108,7 +117,14 @@ export async function POST(
         .select()
         .single();
 
-      if (error) throw error;
+      if (insertError) {
+        console.error("Error creating room:", insertError);
+        return NextResponse.json(
+          { error: `Failed to create room: ${insertError.message || "Database error"}` },
+          { status: 500 }
+        );
+      }
+      
       return NextResponse.json(newRoom);
     }
   } catch (error) {
