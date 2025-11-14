@@ -74,7 +74,35 @@ export class RealtimeGame {
             this.callbacks.onGameReset?.();
           }
         )
-        .subscribe();
+        .on(
+          "broadcast",
+          { event: "player-joined" },
+          (payload) => {
+            // Only notify if it's not our own join event
+            if (payload.payload.playerId !== this.playerId) {
+              this.callbacks.onOpponentJoin?.(payload.payload.playerId);
+              this.callbacks.onOpponentStatusChange?.("connected");
+            }
+          }
+        )
+        .subscribe(async (status) => {
+          if (status === "SUBSCRIBED" && this.playerRole) {
+            // Broadcast player-joined event after moves channel is subscribed
+            // This notifies other players that we've joined
+            try {
+              await this.channel?.send({
+                type: "broadcast",
+                event: "player-joined",
+                payload: {
+                  playerId: this.playerId,
+                  playerRole: this.playerRole,
+                },
+              });
+            } catch (error) {
+              console.error("Error broadcasting player-joined:", error);
+            }
+          }
+        });
 
       // Fetch initial room state
       await this.fetchRoomState();
@@ -304,6 +332,7 @@ export class RealtimeGame {
 
       const room: Room = await response.json();
       
+      // Determine player role
       if (room.player_x_id === this.playerId) {
         this.playerRole = "X";
       } else if (room.player_o_id === this.playerId) {

@@ -29,6 +29,7 @@ export default function OnlineGamePage() {
   const [playerRole, setPlayerRole] = useState<"X" | "O" | null>(null);
   const [linkCopied, setLinkCopied] = useState(false);
   const [isMyTurn, setIsMyTurn] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const realtimeRef = useRef<RealtimeGame | null>(null);
   const playerIdRef = useRef<string>(
@@ -92,17 +93,28 @@ export default function OnlineGamePage() {
         console.error("Failed to join room:", errorMsg);
         setConnectionStatus("error");
         
-        // Show error message to user
+        // Set appropriate error message
         if (errorMsg.includes("not configured")) {
-          alert("Supabase is not configured. Please check your .env.local file and restart the dev server.");
+          setErrorMessage("Supabase is not configured. Please check your .env.local file and restart the dev server.");
+        } else if (errorMsg.includes("Room is full")) {
+          setErrorMessage("Room is full. This room already has 2 players.");
+        } else if (errorMsg.includes("Room not found") || errorMsg.includes("not found")) {
+          setErrorMessage("Room not found. The room ID is invalid or the room has been deleted.");
         } else if (errorMsg.includes("duplicate key") || errorMsg.includes("already exists")) {
           // Room already exists - try to reconnect by fetching the room state
           console.log("Room already exists, attempting to reconnect...");
+          setErrorMessage(null);
           await realtime.connect(); // This will fetch the existing room state
         } else {
-          console.error("Join room error:", errorMsg);
+          setErrorMessage(errorMsg || "Failed to join room. Please try again.");
         }
-        return;
+        
+        // Don't return if it's a duplicate key error (we're trying to reconnect)
+        if (!errorMsg.includes("duplicate key") && !errorMsg.includes("already exists")) {
+          return;
+        }
+      } else {
+        setErrorMessage(null);
       }
       
       if (joinResult.success && joinResult.playerRole) {
@@ -156,10 +168,17 @@ export default function OnlineGamePage() {
   }, [roomId]);
 
   const getStatusMessage = () => {
-    if (connectionStatus === "connecting" || connectionStatus === "error") {
-      return connectionStatus === "error" 
-        ? "Connection error. Please refresh." 
-        : "Connecting...";
+    // Show error message if present
+    if (errorMessage) {
+      return errorMessage;
+    }
+
+    if (connectionStatus === "connecting") {
+      return "Connecting...";
+    }
+
+    if (connectionStatus === "error") {
+      return "Connection error. Please refresh.";
     }
 
     if (opponentStatus === "waiting") {
@@ -167,7 +186,7 @@ export default function OnlineGamePage() {
     }
 
     if (opponentStatus === "disconnected") {
-      return "Opponent left";
+      return "Opponent disconnected";
     }
 
     if (winner) {
@@ -285,29 +304,58 @@ export default function OnlineGamePage() {
 
             {/* Game Status */}
             <div className="mb-6">
-              <p className="text-center text-lg font-semibold">{getStatusMessage()}</p>
+              <p className={`text-center text-lg font-semibold ${
+                errorMessage ? "text-destructive" : ""
+              }`}>
+                {getStatusMessage()}
+              </p>
             </div>
 
             {/* Game Board */}
-            <Board
-              board={board}
-              onSquareClick={handleSquareClick}
-              winningCells={winningCells}
-              disabled={isGameDisabled}
-            />
+            {!errorMessage && (
+              <Board
+                board={board}
+                onSquareClick={handleSquareClick}
+                winningCells={winningCells}
+                disabled={isGameDisabled}
+              />
+            )}
 
             {/* Controls */}
-            <div className="mt-8 flex justify-center">
-              <Button
-                onClick={handleNewGame}
-                size="lg"
-                disabled={opponentStatus !== "connected"}
-                className="min-w-[140px]"
-                aria-label="Start a new game"
-              >
-                New Game
-              </Button>
-            </div>
+            {!errorMessage && (
+              <div className="mt-8 flex justify-center">
+                <Button
+                  onClick={handleNewGame}
+                  size="lg"
+                  disabled={opponentStatus !== "connected"}
+                  className="min-w-[140px]"
+                  aria-label="Start a new game"
+                >
+                  New Game
+                </Button>
+              </div>
+            )}
+            
+            {/* Error Action */}
+            {errorMessage && (
+              <div className="mt-8 flex justify-center gap-4">
+                <Button
+                  onClick={() => router.push("/")}
+                  size="lg"
+                  variant="outline"
+                  className="min-w-[140px]"
+                >
+                  Go Home
+                </Button>
+                <Button
+                  onClick={() => window.location.reload()}
+                  size="lg"
+                  className="min-w-[140px]"
+                >
+                  Retry
+                </Button>
+              </div>
+            )}
           </motion.div>
         </motion.div>
       </AnimatePresence>
