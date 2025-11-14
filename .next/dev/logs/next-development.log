@@ -1,4 +1,345 @@
-[00:00:00.955] Server  LOG      ✓ Ready in 664ms
-[00:00:04.562] Server  LOG      ○ Compiling /online/[roomId] ...
-[00:00:09.437] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:51.220] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:00.982] Server  LOG      ✓ Ready in 693ms
+[00:00:05.848] Server  LOG      ○ Compiling / ...
+[00:00:17.362] Server  WARN     ⚠ [next]/internal/font/google/inter_5972bc34.module.css
+Error while requesting resource
+There was an issue establishing a connection while requesting https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/inter_5972bc34.module.css
+    [next]/internal/font/google/inter_5972bc34.js
+    ./Tictactoe/app/layout.tsx
+
+
+[00:00:17.367] Server  WARN     ⚠ [next]/internal/font/google/inter_5972bc34.module.css
+next/font: warning:
+Failed to download `Inter` from Google Fonts. Using fallback font instead.
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/inter_5972bc34.module.css
+    [next]/internal/font/google/inter_5972bc34.js
+    ./Tictactoe/app/layout.tsx
+
+
+[00:00:17.865] Server  WARN     ⚠ [next]/internal/font/google/inter_5972bc34.module.css
+Error while requesting resource
+There was an issue establishing a connection while requesting https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/inter_5972bc34.module.css
+    [next]/internal/font/google/inter_5972bc34.js
+    ./Tictactoe/app/layout.tsx
+
+
+[00:00:17.866] Server  WARN     ⚠ [next]/internal/font/google/inter_5972bc34.module.css
+next/font: warning:
+Failed to download `Inter` from Google Fonts. Using fallback font instead.
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/inter_5972bc34.module.css
+    [next]/internal/font/google/inter_5972bc34.js
+    ./Tictactoe/app/layout.tsx
+
+
+[00:00:17.939] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:21.651] Server  WARN     ⚠ [next]/internal/font/google/inter_5972bc34.module.css
+Error while requesting resource
+There was an issue establishing a connection while requesting https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/inter_5972bc34.module.css
+    [next]/internal/font/google/inter_5972bc34.js
+    ./Tictactoe/app/layout.tsx
+
+
+[00:00:21.654] Server  WARN     ⚠ [next]/internal/font/google/inter_5972bc34.module.css
+next/font: warning:
+Failed to download `Inter` from Google Fonts. Using fallback font instead.
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/inter_5972bc34.module.css
+    [next]/internal/font/google/inter_5972bc34.js
+    ./Tictactoe/app/layout.tsx
+
+
+[00:00:21.718] Server  WARN     ⚠ [next]/internal/font/google/inter_5972bc34.module.css
+Error while requesting resource
+There was an issue establishing a connection while requesting https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/inter_5972bc34.module.css
+    [next]/internal/font/google/inter_5972bc34.js
+    ./Tictactoe/app/layout.tsx
+
+
+[00:00:21.720] Server  WARN     ⚠ [next]/internal/font/google/inter_5972bc34.module.css
+next/font: warning:
+Failed to download `Inter` from Google Fonts. Using fallback font instead.
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/inter_5972bc34.module.css
+    [next]/internal/font/google/inter_5972bc34.js
+    ./Tictactoe/app/layout.tsx
+
+
+[00:00:23.189] Server  WARN     ⚠ [next]/internal/font/google/inter_5972bc34.module.css
+Error while requesting resource
+There was an issue establishing a connection while requesting https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/inter_5972bc34.module.css
+    [next]/internal/font/google/inter_5972bc34.js
+    ./Tictactoe/app/layout.tsx
+
+
+[00:00:23.190] Server  WARN     ⚠ [next]/internal/font/google/inter_5972bc34.module.css
+next/font: warning:
+Failed to download `Inter` from Google Fonts. Using fallback font instead.
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/inter_5972bc34.module.css
+    [next]/internal/font/google/inter_5972bc34.js
+    ./Tictactoe/app/layout.tsx
+
+
+[00:00:23.191] Server  WARN     ⚠ [next]/internal/font/google/inter_5972bc34.module.css
+Error while requesting resource
+There was an issue establishing a connection while requesting https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/inter_5972bc34.module.css
+    [next]/internal/font/google/inter_5972bc34.js
+    ./Tictactoe/app/layout.tsx
+
+
+[00:00:23.192] Server  WARN     ⚠ [next]/internal/font/google/inter_5972bc34.module.css
+next/font: warning:
+Failed to download `Inter` from Google Fonts. Using fallback font instead.
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/inter_5972bc34.module.css
+    [next]/internal/font/google/inter_5972bc34.js
+    ./Tictactoe/app/layout.tsx
+
+
+[00:00:23.366] Server  WARN     ⚠ [next]/internal/font/google/inter_5972bc34.module.css
+Error while requesting resource
+There was an issue establishing a connection while requesting https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/inter_5972bc34.module.css
+    [next]/internal/font/google/inter_5972bc34.js
+    ./Tictactoe/app/layout.tsx
+
+
+[00:00:23.366] Server  WARN     ⚠ [next]/internal/font/google/inter_5972bc34.module.css
+next/font: warning:
+Failed to download `Inter` from Google Fonts. Using fallback font instead.
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/inter_5972bc34.module.css
+    [next]/internal/font/google/inter_5972bc34.js
+    ./Tictactoe/app/layout.tsx
+
+
+[00:00:23.367] Server  WARN     ⚠ [next]/internal/font/google/inter_5972bc34.module.css
+Error while requesting resource
+There was an issue establishing a connection while requesting https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/inter_5972bc34.module.css
+    [next]/internal/font/google/inter_5972bc34.js
+    ./Tictactoe/app/layout.tsx
+
+
+[00:00:23.368] Server  WARN     ⚠ [next]/internal/font/google/inter_5972bc34.module.css
+next/font: warning:
+Failed to download `Inter` from Google Fonts. Using fallback font instead.
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/inter_5972bc34.module.css
+    [next]/internal/font/google/inter_5972bc34.js
+    ./Tictactoe/app/layout.tsx
+
+
+[00:00:26.854] Server  WARN     ⚠ [next]/internal/font/google/inter_5972bc34.module.css
+Error while requesting resource
+There was an issue establishing a connection while requesting https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/inter_5972bc34.module.css
+    [next]/internal/font/google/inter_5972bc34.js
+    ./Tictactoe/app/layout.tsx
+
+
+[00:00:26.856] Server  WARN     ⚠ [next]/internal/font/google/inter_5972bc34.module.css
+next/font: warning:
+Failed to download `Inter` from Google Fonts. Using fallback font instead.
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/inter_5972bc34.module.css
+    [next]/internal/font/google/inter_5972bc34.js
+    ./Tictactoe/app/layout.tsx
+
+
+[00:00:28.315] Server  WARN     ⚠ [next]/internal/font/google/inter_5972bc34.module.css
+Error while requesting resource
+There was an issue establishing a connection while requesting https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/inter_5972bc34.module.css
+    [next]/internal/font/google/inter_5972bc34.js
+    ./Tictactoe/app/layout.tsx
+
+
+[00:00:28.317] Server  WARN     ⚠ [next]/internal/font/google/inter_5972bc34.module.css
+next/font: warning:
+Failed to download `Inter` from Google Fonts. Using fallback font instead.
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/inter_5972bc34.module.css
+    [next]/internal/font/google/inter_5972bc34.js
+    ./Tictactoe/app/layout.tsx
+
+
+[00:00:28.391] Server  WARN     ⚠ [next]/internal/font/google/inter_5972bc34.module.css
+Error while requesting resource
+There was an issue establishing a connection while requesting https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/inter_5972bc34.module.css
+    [next]/internal/font/google/inter_5972bc34.js
+    ./Tictactoe/app/layout.tsx
+
+
+[00:00:28.392] Server  WARN     ⚠ [next]/internal/font/google/inter_5972bc34.module.css
+next/font: warning:
+Failed to download `Inter` from Google Fonts. Using fallback font instead.
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/inter_5972bc34.module.css
+    [next]/internal/font/google/inter_5972bc34.js
+    ./Tictactoe/app/layout.tsx
+
+
+[00:00:28.392] Server  WARN     ⚠ [next]/internal/font/google/inter_5972bc34.module.css
+Error while requesting resource
+There was an issue establishing a connection while requesting https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/inter_5972bc34.module.css
+    [next]/internal/font/google/inter_5972bc34.js
+    ./Tictactoe/app/layout.tsx
+
+
+[00:00:28.393] Server  WARN     ⚠ [next]/internal/font/google/inter_5972bc34.module.css
+next/font: warning:
+Failed to download `Inter` from Google Fonts. Using fallback font instead.
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/inter_5972bc34.module.css
+    [next]/internal/font/google/inter_5972bc34.js
+    ./Tictactoe/app/layout.tsx
+
+
+[00:00:28.421] Server  WARN     ⚠ [next]/internal/font/google/inter_5972bc34.module.css
+Error while requesting resource
+There was an issue establishing a connection while requesting https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/inter_5972bc34.module.css
+    [next]/internal/font/google/inter_5972bc34.js
+    ./Tictactoe/app/layout.tsx
+
+
+[00:00:28.422] Server  WARN     ⚠ [next]/internal/font/google/inter_5972bc34.module.css
+next/font: warning:
+Failed to download `Inter` from Google Fonts. Using fallback font instead.
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/inter_5972bc34.module.css
+    [next]/internal/font/google/inter_5972bc34.js
+    ./Tictactoe/app/layout.tsx
+
+
+[00:00:28.423] Server  WARN     ⚠ [next]/internal/font/google/inter_5972bc34.module.css
+Error while requesting resource
+There was an issue establishing a connection while requesting https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/inter_5972bc34.module.css
+    [next]/internal/font/google/inter_5972bc34.js
+    ./Tictactoe/app/layout.tsx
+
+
+[00:00:28.423] Server  WARN     ⚠ [next]/internal/font/google/inter_5972bc34.module.css
+next/font: warning:
+Failed to download `Inter` from Google Fonts. Using fallback font instead.
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/inter_5972bc34.module.css
+    [next]/internal/font/google/inter_5972bc34.js
+    ./Tictactoe/app/layout.tsx
+
+
+[00:00:30.976] Server  WARN     ⚠ [next]/internal/font/google/inter_5972bc34.module.css
+Error while requesting resource
+There was an issue establishing a connection while requesting https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/inter_5972bc34.module.css
+    [next]/internal/font/google/inter_5972bc34.js
+    ./Tictactoe/app/layout.tsx
+
+
+[00:00:30.978] Server  WARN     ⚠ [next]/internal/font/google/inter_5972bc34.module.css
+next/font: warning:
+Failed to download `Inter` from Google Fonts. Using fallback font instead.
+
+Import trace:
+  Server Component:
+    [next]/internal/font/google/inter_5972bc34.module.css
+    [next]/internal/font/google/inter_5972bc34.js
+    ./Tictactoe/app/layout.tsx
+
+
+[00:00:35.043] Server  ERROR   Error checking for existing room: {}
+[00:00:35.048] Server  ERROR   Error checking for existing room: {}
+[00:00:35.662] Browser ERROR   Failed to join room: {"message":"Database error: TypeError: fetch failed","status":500,"statusText":"Internal Server Error"}
+[00:00:35.662] Browser ERROR   Failed to join room: Database error: TypeError: fetch failed
+[00:00:35.662] Browser ERROR   Join room error: Database error: TypeError: fetch failed
+[00:00:35.662] Browser ERROR   Failed to join room: {"message":"Database error: TypeError: fetch failed","status":500,"statusText":"Internal Server Error"}
+[00:00:35.662] Browser ERROR   Failed to join room: Database error: TypeError: fetch failed
+[00:00:35.662] Browser ERROR   Join room error: Database error: TypeError: fetch failed
+[00:00:38.594] Server  ERROR   Error checking for existing room: {}
+[00:00:39.651] Browser ERROR   Failed to join room: {"message":"Database error: TypeError: fetch failed","status":500,"statusText":"Internal Server Error"}
+[00:00:39.652] Browser ERROR   Failed to join room: Database error: TypeError: fetch failed
+[00:00:39.652] Browser ERROR   Join room error: Database error: TypeError: fetch failed
